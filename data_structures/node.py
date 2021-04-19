@@ -13,16 +13,18 @@ class Node:
         self.next = None
 
     def __repr__(self):
-        return '[{}] -> None'.format(self.elem)
+        return '[{}] ->'.format(self.elem)
 
-    def is_head(self):
-        '''
-        Is a node a `head` node?
-        '''
-        return self.elem == None
 
-    def is_tail(self):
-        '''
-        Is a node the `tail` node?
-        '''
-        return self.next == None
+class NodeLR(Node):
+    '''
+    This is Node that is connected
+    on both sides, left & right. Used in
+    `reverse-able linked list` type of data strutures
+    '''
+    def __init__(self, elem=None):
+        super(NodeLR, self).__init__()
+        self.prev = None
+
+    def __repr__(self):
+        return 'None <- [{}] -> None'.format(self.elem)
