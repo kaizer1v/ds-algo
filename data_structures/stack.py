@@ -5,8 +5,8 @@ from linkedlist import LinkedList
 
 class StackUsingLinkedList(LinkedList):
 
-    def __init__(self):
-        pass
+    def __init__(self, elems):
+        self.elems = LinkedList.__init__(self, elems)
 
     def __len__(self):
         pass

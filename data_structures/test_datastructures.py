@@ -44,16 +44,29 @@ class TestNode(unittest.TestCase):
         self.assertEqual(a.next.next, c)
         self.assertEqual(a.next.next.next, None)
 
+class TestLinkedList(unittest.TestCase):
+
+    def setUp(self):
+        self.ll = LinkedList([4, 7])
+
+    def tearDown(self):
+        pass
+
     def test_linkedlist(self):
-        ll = LinkedList([4, 7])
-        self.assertEqual(next(ll).elem, 4)
-        self.assertEqual(next(ll).elem, 7)
-        # self.assertRaises(StopIteration, next(ll))
+        self.assertEqual(next(self.ll).elem, 4)
+        self.assertEqual(next(self.ll).elem, 7)
+        # self.assertRaises(StopIteration, next(self.ll))
 
     def test_linkedlist_add(self):
-        ll = LinkedList([4, 7])
-        ll.add(2).add(8)
-        print(ll)
+        self.assertEqual(len(self.ll), 2)
+        self.ll.add(2).add(8)
+        self.assertEqual(len(self.ll), 4)
+
+    def test_linkedlist_remove(self)
+        self.ll.remove(1)       # remove elem on index `1`
+        self.assertEqual(len(self.ll), 1)
+
+        #self.ll.remove(-1)     # should throw an error
 
 if __name__ == '__main__':
     unittest.main()

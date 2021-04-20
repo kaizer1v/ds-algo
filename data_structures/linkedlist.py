@@ -12,6 +12,7 @@ class LinkedList(Node):
 
     def __init__(self, items):
         self.node_list = list(map(lambda i: Node(i), items))
+        self.l = 0
         i = 0
         self.head_node = self.node_list[i]
         init_node = self.head_node
@@ -19,9 +20,10 @@ class LinkedList(Node):
             init_node.next = self.node_list[i + 1]
             init_node = self.node_list[i + 1]
             i += 1
+        self.l = i + 1
 
     def __len__(self):
-        pass
+        return self.l
 
     def __repr__(self):
         if len(self.node_list) <= 1:
@@ -59,13 +61,26 @@ class LinkedList(Node):
         while curr.next != None:
             curr = curr.next
         curr.next = new_node
+        self.l += 1
         return self
 
     def remove(self, n, ind=True):
         '''
         remove element by index provided by `ind`
         '''
-        pass
+        if ind == True:
+            # n is an index
+            if self.head_node == None:
+                return self.head_node
+            i = 0
+            curr = self.head_node
+            while i + 1 != ind:
+                curr = curr.next
+                i += 1
+            curr = curr.next
+
+        return self
+
 
     def find(self, e):
         '''
