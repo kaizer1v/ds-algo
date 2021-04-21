@@ -1,34 +1,42 @@
 '''
 This is a stack data structure. Uses the LIFO concept
 '''
-from linkedlist import LinkedList
+from node import Node
 
-class StackUsingLinkedList(LinkedList):
+class StackUsingLinkedList(Node):
 
-    def __init__(self, elems):
-        self.elems = LinkedList.__init__(self, elems)
+    def __init__(self):
+        self._head = None
+        self._size = 0
 
     def __len__(self):
-        pass
+        return self._size
 
     def __repr__(self):
-        pass
+        tr = 'None'
+        p = self._head
+        while p != None:
+            tr += ' <- {}'.format(str(p._elem))
+            p = p._next
+        return tr
 
-    def __iter__(self):
-        pass
+    def is_empty(self):
+        return self._size == 0
 
-    def __next__(self):
-        pass
+    def push(self, e):
+        self._head = Node(e, self._head)
+        self._size += 1
+        return self
+
+    def top(self):
+        if self.is_empty():
+            raise Empty('Stack is Empty')
+        return self._head._elem
 
     def pop(self):
-        '''
-        Pop the most recently added node & remove from
-        the stack
-        '''
-        pass
-
-    def push(self, node):
-        '''
-        Push a node to the top of the stack
-        '''
-        pass
+        if self.is_empty():
+            raise Empty('Stack is Empty')
+        to_return = self._head._elem
+        self._head = self._head._next
+        self._size -= 1
+        return to_return
