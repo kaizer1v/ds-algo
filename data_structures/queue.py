@@ -1,30 +1,43 @@
-from linkedlist import LinkedList
+from node import Node
 
-class QueueUsingLinkedList(LinkedList):
-
-    def __init__(self):
-        pass
+class QueueUsingLinkedList(Node):
 
     def __len__(self):
-        pass
+        return self._size
 
     def __repr__(self):
-        pass
+        tr = ''
+        p = self._head
+        while p != None:
+            tr += '[' + str(p._elem) + ']->'
+            p = p._next
+        return tr
 
-    def __iter__(self):
-        pass
+    def push(self, e):
+        # push to begining
+        n = self._Node(e, next=None)
+        n._next = self._head
+        self._head = n
+        self._size += 1
+        return self
 
-    def __next__(self):
-        pass
+    def pop_b(self):
+        # pop from beginning
+        tr = self._head
+        self._head = self._head._next
+        self._size -= 1
+        return tr
 
     def pop(self):
-        '''
-        Pop the first node added
-        '''
-        pass
+        # pop from end
+        if self._size <= 1:
+            return self._head._elem
+        tr = ''
+        p = self._head
+        while p._next._next != None:
+            p = p._next
+        tr = p._next._elem
+        return tr
 
-    def push(self, node):
-        '''
-        Push a node to the end of the stack
-        '''
-        pass
+    def is_empty():
+        return self._size == 0

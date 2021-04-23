@@ -3,7 +3,7 @@ Linked Lists
 
 [a] -> [b] -> [c] -> None
 
-Elements are linked to each other
+Multiple nodes are linked to each other
 '''
 
 from node import Node
@@ -11,79 +11,58 @@ from node import Node
 class LinkedList(Node):
 
     def __init__(self, items):
-        self.node_list = list(map(lambda i: Node(i), items))
-        self.l = 0
         i = 0
-        self.head_node = self.node_list[i]
-        init_node = self.head_node
-        while i != len(self.node_list) - 1:
-            init_node.next = self.node_list[i + 1]
-            init_node = self.node_list[i + 1]
-            i += 1
-        self.l = i + 1
+        while i + 1 != len(items):
+            self.join(items[i], items[i + 1])
+            i = i + 1
+        self.join(items[i], None)
 
-    def __len__(self):
-        return self.l
+    def join(self, a, b):
+        if not type(a) == Node:
+            a = Node(a)
+        if not type(b) == Node:
+            b = Node(b)
+        a.next = b
+        return self
 
     def __repr__(self):
-        if len(self.node_list) <= 1:
-            return self.node_list[0]
-        init_node = self.node_list[0]
-        to_print = ''
-        while init_node.next != None:
-            to_print += str(init_node)
-            init_node = init_node.next
-        to_print += str(init_node) + str(init_node.next)
-        return to_print
-
-    def __iter__(self):
-        '''
-        The linked list data struture should be iterable
-        '''
-        return self
-
-    def __next__(self):
-        if self.head_node == None:
-            raise StopIteration
-        curr = self.head_node
-        self.head_node = self.head_node.next
-        return curr
-
-    def add(self, e):
-        '''
-        add a node to the linked list
-        '''
-        new_node = Node(e)
-        if self.head_node == None:
-            self.head_node = new_node
-            return self
-        curr = self.head_node
-        while curr.next != None:
-            curr = curr.next
-        curr.next = new_node
-        self.l += 1
-        return self
-
-    def remove(self, n, ind=True):
-        '''
-        remove element by index provided by `ind`
-        '''
-        if ind == True:
-            # n is an index
-            if self.head_node == None:
-                return self.head_node
-            i = 0
-            curr = self.head_node
-            while i + 1 != ind:
-                curr = curr.next
-                i += 1
-            curr = curr.next
-
-        return self
+        return ''
 
 
-    def find(self, e):
-        '''
-        returns
-        '''
-        pass
+class LinkedListIterable:
+
+  def insert(self, n_data):
+    node = Node(n_data, self.head)
+    self.head = node
+
+  def find(self, n_data):
+    node = self.head
+    while node.get_next() != None:
+      if node.get_data() == n_data:
+        return True
+      node = node.get_next()
+    return node.get_data() == n_data
+
+  def print(self):
+    node = self.head
+    while node.get_next() != None:
+      print(node.get_data())
+      node = node.get_next()
+    if node.get_next() == None:
+      print(node.get_data())
+
+  def is_empty(self):
+    return self.head == None
+
+  def __iter__(self):
+    return self
+
+  def __next__(self):
+    if self.head == None:
+      raise StopIteration
+    node = self.head
+    self.head = node.get_next()
+    return node.get_data()
+
+  def __init__(self):
+    self.head = None
