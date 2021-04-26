@@ -1,6 +1,13 @@
 '''
 Selection Sort
 
+Given a list of items, it will find the minimum item first
+and put it in the 1st place. Then from the remaining items,
+again pick the min and put in the 2nd place. Does this until
+the last item in the list.
+
+Sorts the list in O(n^2) time.
+
 1. Iterate through the list of items to find the `smallest` one first
 2. Swap that with the item at the 1st element in the list
 '''
