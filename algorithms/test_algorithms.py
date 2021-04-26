@@ -1,5 +1,6 @@
 import unittest
 from sort_insertion import sort_insertion
+from sort_selection import sort_selection
 
 class TestAlgorighms(unittest.TestCase):
 
@@ -30,6 +31,15 @@ class TestAlgorighms(unittest.TestCase):
                                                             'num': 88
                                                         }]
         )
+
+    def test_sort_selection(self):
+        a = []
+        b = [0]
+        c = [2, 3, 1]
+        self.assertEqual(sort_selection(a), [])
+        self.assertEqual(sort_selection(b), [0])
+        self.assertEqual(sort_selection(c), [1, 2, 3])
+        self.assertEqual(sort_selection(c, asc=False), [3, 2, 1])
 
 
 if __name__ == '__main__':
