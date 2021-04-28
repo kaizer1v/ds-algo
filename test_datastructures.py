@@ -5,7 +5,6 @@
 
 import unittest
 from node import Node, NodeLR
-# from linkedlist import LinkedList
 from stack import StackUsingLinkedList
 from queue import QueueUsingLinkedList
 from matrix import Matrix
@@ -21,21 +20,27 @@ class TestNode(unittest.TestCase):
         pass
 
     def setUp(self):
-        n = Node()
-        a = Node('a')
-        b = Node('b')
-        c = Node('c')
+        pass
 
     def tearDown(self):
         pass
 
     def test_node(self):
+        n = Node()
+        a = Node('a')
+        b = Node('b')
+        c = Node('c')
         self.assertEqual(n.elem, None)
         self.assertEqual(a.elem, 'a')
         self.assertEqual(n.next, None)
         self.assertEqual(a.next, None)
 
     def test_node_linking(self):
+        n = Node()
+        a = Node('a')
+        b = Node('b')
+        c = Node('c')
+
         a.next = b
         b.next = c
 
@@ -55,48 +60,33 @@ class TestNode(unittest.TestCase):
         c.prev = b
         print(a, b, c)
 
-# class TestLinkedList(unittest.TestCase):
-
-#     def setUp(self):
-#         self.ll = LinkedList([4, 7])
-
-#     def tearDown(self):
-#         pass
-
-#     def test_linkedlist(self):
-#         self.assertEqual(next(self.ll).elem, 4)
-#         self.assertEqual(next(self.ll).elem, 7)
-#         # self.assertRaises(StopIteration, next(self.ll))
-
-#     def test_linkedlist_add(self):
-#         self.assertEqual(len(self.ll), 2)
-#         self.ll.add(2).add(8)
-#         self.assertEqual(len(self.ll), 4)
-
-    # def test_linkedlist_remove(self):
-    #     self.ll.remove(1)       # remove elem on index `1`
-    #     self.assertEqual(len(self.ll), 1)
-
 
 class TestStack(unittest.TestCase):
 
     def test_stack(self):
         s = StackUsingLinkedList()
         self.assertEqual(len(s), 0)
-        self.assertEqual(s._head, None)
+        self.assertEqual(s.head, None)
+        # 3 <- 9 <- 4
         s.push(3).push(9).push(4)
         self.assertEqual(len(s), 3)
-        self.assertEqual(s._head, 4)
+        # self.assertEqual(s.head, 4)
         self.assertEqual(s.pop(), 4)
         self.assertEqual(len(s), 2)
 
-# class TestMatrix(unittest.TestCase):
-#     def test_validity(self):
-#         # m1 = Matrix([1, 2])
-#         # print(m1)
-#         m2 = Matrix([[1, 2, 3], [3, 2, 1]])
-#         print(m2)
-#         # self.assertFalse(m)
+
+class TestQueue(unittest.TestCase):
+
+    def test_queue(self):
+    q = QueueUsingLinkedList()
+    q.enqueue(9).enqueue(4).enqueue(3)
+    self.assertEqual(len(q), 3)
+    self.assertEqual(q.head, 3)
+    self.assertEqual(q.tail, 9)
+    self.assertEqual(q.dequeue(), 9)
+    self.assertEqual(len(q), 2)
+    q.enqueue(7)
+    self.assertEqual(q.dequeue(), 4)
 
 if __name__ == '__main__':
     unittest.main()
