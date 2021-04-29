@@ -59,7 +59,7 @@ class QueueUsingLinkedList(Node):
         -------
         self
         '''
-        n = self.Node(e)
+        n = Node(e)
         if self.is_empty():
             self.head = n
             self.tail = n
@@ -82,3 +82,26 @@ class QueueUsingLinkedList(Node):
         self.tail = self.tail.next
         self.size -= 1
         return tr
+
+
+def queue_up(items):
+    '''
+    Utility function to generate queue
+
+    Given a list of items, will
+    return a queue containing these
+    connected items
+
+    Parameters
+    ----------
+    items : list
+        list of items to be queued up
+
+    Returns
+    -------
+    QueueUsingLinkedList
+    '''
+    q = QueueUsingLinkedList()
+    for i in items:
+        q.enqueue(i)
+    return q

@@ -77,3 +77,26 @@ class StackUsingLinkedList(Node):
             self.size -= 1
             return t.elem
         return None
+
+
+def stack_up(items):
+    '''
+    Utility function to generate stacks
+
+    Given a list of items, will
+    return a stack containing these
+    connected items
+
+    Parameters
+    ----------
+    items : list
+        list of items to be stacked up
+
+    Returns
+    -------
+    StackUsingLinkedList
+    '''
+    s = StackUsingLinkedList()
+    for i in items:
+        s.push(i)
+    return s
