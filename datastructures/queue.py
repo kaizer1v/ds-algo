@@ -2,14 +2,28 @@
 Queue
 
 A datastructure that uses the FIFO concept i.e First In First Out
+
+NOTE:
+In the implenetations of using a queue (both using LL as well as lists),
+remember that when the queue is initialised, it will be
+initialised with a `head` and a `tail` pointers, which points to `None`
+i.e. the same element. Only after the 1st element is added, the `head`
+will point to the 1st element, so will the `tail`. From the 2nd element
+onwards, the `tail` will always point to the "earliest" element added
+to the queue where as the `head` will always point to the most "recent"
+element added to the queue
+
+REMEMBER:
+HEAD -> Most Recent
+TAIL -> Most Earliest
 '''
-class QueueUsingLinkedList:
+class Node:
+    def __init__(self, e, nxt=None):
+        self.elem = e
+        self.next = nxt
 
-    class Node:
-        def __init__(self, e, nxt=None):
-            self.elem = e
-            self.next = nxt
 
+class QueueUsingLinkedList(Node):
 
     def __init__(self):
         self.head = None    # points to most recently added elem
@@ -68,6 +82,3 @@ class QueueUsingLinkedList:
         self.tail = self.tail.next
         self.size -= 1
         return tr
-
-
-

@@ -24,15 +24,21 @@ linked-list, you need to search for the correct position to insert or
 find the element to delete first, so these operations will also take
 O(n), as opposed to a BST, where they take O(log n)
 '''
+class TreeNode:
 
-from node import NodeLR
+    def __init__(self, elem, left=None, right=None):
+        self.elem = elem
+        self.left = left
+        self.right = right
 
-class Tree:
+class Tree(TreeNode):
     '''
-
     This is a tree where each node has at most 2 nodes attached
     to it i.e. to the left or to the right
     '''
-
     def __init__(self):
+        self.root = TreeNode(None)
+
+    def __repr__(self):
+        # traverse through the tree
         pass

@@ -10,13 +10,14 @@ initialised only with a `head` pointer, which points to `None`
 Only after the 1st element is added, the `head` will point to the
 1st element
 '''
-class StackUsingLinkedList:
 
-    class Node:
-        def __init__(self, e, nxt=None):
-            self.elem = e
-            self.next = nxt
+class Node:
+    def __init__(self, e, nxt=None):
+        self.elem = e
+        self.next = nxt
 
+
+class StackUsingLinkedList(Node):
 
     def __init__(self):
         self.head = None    # head is a pointer, NOT a `Node` itself
@@ -27,11 +28,11 @@ class StackUsingLinkedList:
 
     def __repr__(self):
         if not self.is_empty():
-            s = self.head
+            h = self.head
             tr = ''
-            while s != None:
-                tr += str(s.elem) + '->'
-                s = s.next
+            while h != None:
+                tr += str(h.elem) + '->'
+                h = h.next
             return tr + 'None'
         return '[None]'
 
