@@ -8,6 +8,8 @@ This repository is structured in a way to help you understand and implement **co
 
 > The most essential tool kit for anyone writing software. Also just for kicks.
 
+> To be able to solve for really large and scalable problems
+
 What does this repository contain?
 
 ## 1. Data Structures
