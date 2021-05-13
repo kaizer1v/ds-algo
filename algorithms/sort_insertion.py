@@ -3,6 +3,21 @@ Insertion Sort
 
 Given a list of items and the comparison logic, it will
 sort the list in O(n^2) time.
+
+
+Time
+----
+O(n^2)
+
+Logic / Algorithm
+-----------------
+-> Start from the 2nd element in the list (index)
+-> Compare with the previous element (prev)
+    => If `index` < `prev`, then swap it
+-> Move index by +1
+
+Essentially, find the position of 1 element at a time
+
 '''
 
 def compare_fn(a, b, key):

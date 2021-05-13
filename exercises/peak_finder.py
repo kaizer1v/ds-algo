@@ -125,8 +125,8 @@ def peak_2d(l):
     Example
     -------
     [[1, 10,  7,  4],
-    [[5,  3, 11,  5],
-    [[8,  6,  9, 10]]
+    [5,  3, 11,  5],
+    [8,  6,  9, 10]]
     Here, 11 is a hill, since it is surrounded by smaller elements
 
 
@@ -142,8 +142,7 @@ def peak_2d(l):
     '''
     cols = len(l[0])
     start_col = cols // 2
-    sel_col = convert_col_to_row(l, start_col)
-    sel_row = find_max_ind(sel_col)
+    sel_row = find_max_ind(convert_col_to_row(l, start_col))
     return peak_1d(l[sel_row])
 
 
@@ -151,6 +150,9 @@ def find_max_ind(l):
     '''
     Given a list of comparable items, find
     the maximum element in the list
+
+    Time Complexity: O(n)
+    You'll have to look at every element to find the max
 
     Parameters
     ----------
@@ -167,8 +169,9 @@ def find_max_ind(l):
     while i != len(l) - 1:
         if l[i] > maxi:
             maxi = l[i]
+            tr_i = i
         i += 1
-    return i
+    return tr_i
 
 
 def convert_col_to_row(l, i):
